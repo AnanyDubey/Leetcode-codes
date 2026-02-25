@@ -1,24 +1,13 @@
 1class Solution {
-2public:
-3    string longestCommonPrefix(vector<string>& strs) {
-4        if (strs.empty()) return "";
-5
-6        string temp = strs[0];  // prefix string
-7
-8        for (int i = 1; i < strs.size(); i++) {
-9            int j = 0;
-10
-11            // compare characters
-12            while (j < min(temp.size(), strs[i].size()) && temp[j] == strs[i][j]) {
-13                j++;
-14            }
-15
-16            temp = temp.substr(0, j);  // reduce prefix
-17
-18            if (temp == "") break;  // optimization
-19        }
-20
-21        return temp;
-22    }
-23};
-24
+2    public String longestCommonPrefix(String[] strs) {
+3        
+4        if(strs.length == 0) return "";
+5        String prefix = strs[0];
+6        for(int i = 0; i < strs.length; i++){
+7            while(strs[i].indexOf(prefix) !=0){
+8                prefix = prefix.substring(0, prefix.length()-1);
+9            }
+10        }
+11    return prefix;
+12    }
+13};
