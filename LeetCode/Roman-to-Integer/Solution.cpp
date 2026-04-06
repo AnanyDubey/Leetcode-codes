@@ -14,7 +14,7 @@
 14        int num, sum = 0;
 15        
 16        for(int i = 0; i < len;){
-17            if((roman[s[i]] >= roman[s[i+1]])){
+17            if((i == (len - 1))||(roman[s[i]] >= roman[s[i+1]])){
 18                num = roman[s[i]];
 19                i++;
 20            }
