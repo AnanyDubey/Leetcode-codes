@@ -1,31 +1,31 @@
 1class Solution {
 2public:
 3    int romanToInt(string s) {
-4        unordered_map<char, int> mp;
-5        
-6        mp['I'] = 1; 
-7        mp['V'] = 5;
-8        mp['X'] = 10;
-9        mp['C'] = 100;
-10        mp['L'] = 50;
-11        mp['D'] = 500;
-12        mp['M'] = 1000;
-13
-14        int ans = 0;
+4        map<char, int> roman;
+5        roman.insert(make_pair('I', 1));
+6        roman.insert(make_pair('V', 5));
+7        roman.insert(make_pair('X', 10));
+8        roman.insert(make_pair('L', 50));
+9        roman.insert(make_pair('C', 100));
+10        roman.insert(make_pair('D', 500));
+11        roman.insert(make_pair('M', 1000));
+12    
+13        int len = s.length();
+14        int num, sum = 0;
 15        
-16        for(int i = 0; i < s.length();i++){
-17            if(i < s.length()-1 && mp[s[i]] < mp[s[i+1]])
-18                ans = ans - mp[s[i]];
-19            
-20            else 
-21                ans = ans + mp[s[i]];
-22        
-23        }
-24        
-25        
-26        
-27        return ans;
-28
-29
-30    }
+16        for(int i = 0; i < len;){
+17            if((roman[s[i]] >= roman[s[i+1]])){
+18                num = roman[s[i]];
+19                i++;
+20            }
+21            else{
+22                num = roman[s[i+1]] - roman[s[i]];
+23                i = i + 2;
+24            }
+25                sum = sum + num;
+26            }
+27        return sum;
+28    }
+29        
+30    
 31};
