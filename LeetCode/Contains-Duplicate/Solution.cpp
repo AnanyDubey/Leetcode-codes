@@ -1,13 +1,13 @@
 1class Solution {
 2public:
 3    bool containsDuplicate(vector<int>& nums) {
-4        unordered_set<int> seen;
-5        for(int x : nums){
-6            if(seen.count(x)){
-7                return true;
-8            }
-9            seen.insert(x);
-10        }
-11    return false;
+4        unordered_set<int> s;
+5
+6        for(int x : nums){
+7            if(s.count(x)) return true;
+8            s.insert(x);
+9        }
+10
+11        return false;
 12    }
 13};
