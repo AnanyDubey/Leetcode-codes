@@ -3,15 +3,15 @@
 3    bool isAnagram(string s, string t) {
 4        if(s.length() != t.length()) return false;
 5
-6        vector<int> ans(26,0);
+6        vector<int> ans(256,0);
 7
-8        for(int i = 0 ; i < s.length(); i++){
-9            ans[s[i] - 'a']++;
-10            ans[t[i] - 'a']--;
+8        for(int i = 0; i < s.length(); i++){
+9            ans[s[i]]++;
+10            ans[t[i]]--;
 11        }
 12        for(int x : ans){
 13            if(x != 0) return false;
 14        }
-15    return true;
+15        return true;
 16    }
 17};
