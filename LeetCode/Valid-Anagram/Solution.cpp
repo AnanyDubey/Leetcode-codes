@@ -1,17 +1,19 @@
 1class Solution {
 2public:
 3    bool isAnagram(string s, string t) {
-4        if(s.length() != t.length()) return false;
-5
-6        vector<int> ans(256,0);
-7
-8        for(int i = 0; i < s.length(); i++){
-9            ans[s[i]]++;
-10            ans[t[i]]--;
-11        }
-12        for(int x : ans){
-13            if(x != 0) return false;
+4
+5        if(s.length() != t.length()) return false;
+6        for(int i = 0; i < s.length(); i++){
+7            for(int j = 0; j < t.length(); j++){
+8                if(s[i]==t[j]){
+9                    //s.erase(s.begin() + i);
+10                    t.erase(t.begin() + j);
+11                    break;
+12                }
+13            }
 14        }
-15        return true;
-16    }
-17};
+15    cout << s << endl << t;
+16    if(t.empty()) return true;
+17    return false;
+18    }
+19};
