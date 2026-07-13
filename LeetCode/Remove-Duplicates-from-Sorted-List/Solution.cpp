@@ -12,29 +12,24 @@
 12public:
 13    ListNode* deleteDuplicates(ListNode* head) {
 14        if(head == NULL || head->next == NULL) return head;
-15
-16
-17        ListNode* prev = head;
-18        ListNode* temp = head->next;
-19
-20        while(temp != NULL){
-21            if(prev->val == temp->val){
-22
-23                prev->next = temp->next;
-24                temp = temp->next;
-25
-26            }
-27
-28            else{
-29
-30                prev = prev -> next;
-31                temp = temp -> next;
-32            }
-33        }
+15        ListNode* prev = head;
+16        ListNode* temp = head->next;
+17
+18
+19        while (temp!= NULL){
+20            if(prev->val == temp->val){
+21                prev->next = temp->next;
+22                temp = temp->next;
+23            }
+24            else{
+25                prev = prev -> next;
+26                temp = temp -> next;
+27            }
+28        
+29        }
+30        prev -> next = NULL;
+31        return head;
+32    
+33    }
 34
-35            prev -> next = NULL;
-36
-37    return head;
-38
-39    }
-40};
+35};
