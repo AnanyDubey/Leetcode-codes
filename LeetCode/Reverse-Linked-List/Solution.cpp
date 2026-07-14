@@ -20,7 +20,7 @@
 20            curr->next = prev;
 21            prev = curr;
 22            curr = nxt;
-23            nxt = nxt->next;
+23            nxt = curr->next;
 24
 25        }
 26        curr->next = prev;
