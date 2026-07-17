@@ -11,8 +11,7 @@
 11            result = result * 10 + d;
 12            dummy/=10;
 13        }
-14//        variable = (condition) ? Expression2 : Expression3;
-15
-16return (result == x) ? true : false;
-17    }
-18};
+14        if(result == x) return true;
+15        else return false;
+16    }
+17};
