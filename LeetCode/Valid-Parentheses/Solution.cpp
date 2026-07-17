@@ -1,37 +1,29 @@
 1class Solution {
 2public:
-3
-4    bool isMatching(char a, char b){
-5        return((a=='[' && b==']' || a=='{' && b=='}' || a=='(' && b==')'));
-6    }
-7
+3    bool isValid(string s) {
+4        int len = s.length();
+5        if(len <=1 ) return false;
+6
+7        stack<char> sta;
 8
-9    bool isValid(string s) {
-10        stack<char> st;
-11
-12        for( int i = 0 ; i < s.length(); i++){
-13            if(s[i]=='[' || s[i]=='{' || s[i]=='('){
-14                st.push(s[i]);
-15            }
-16            else {
-17                if(st.empty()){
-18                    return false;
-19                }
-20                if(isMatching(st.top(), s[i])){
-21                    st.pop();
-22                }
-23                else
-24                    return false;
-25                
-26
-27            }
-28        
-29
-30        }
-31
-32        if(st.empty()){
-33            return true;
-34        }
-35        else return false;
-36    }
-37};
+9        for(int i = 0; i < len; i++){
+10            if(s[i]=='(' || s[i]=='{' || s[i]=='['){
+11                sta.push(s[i]);
+12            }
+13            else if(s[i]==')' || s[i]=='}' || s[i]==']'){
+14                if(sta.empty()) 
+15                return false;
+16
+17            else if(s[i]==']' && sta.top()!='[') return false;
+18            else if(s[i]=='}' && sta.top()!='{') return false;
+19            else if(s[i]==')' && sta.top()!='(') return false;
+20
+21            else sta.pop();
+22            }
+23        }
+24
+25        if(sta.empty())
+26        return true;
+27        else return false;
+28    }
+29};
