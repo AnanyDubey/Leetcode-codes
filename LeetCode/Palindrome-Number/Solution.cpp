@@ -7,7 +7,7 @@
 7        }
 8        else{
 9        long result=0;
-10            int temp, a;
+10        int temp, a;
 11        temp = x;
 12        while(temp != 0){
 13            a = temp % 10;
