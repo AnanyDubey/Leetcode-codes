@@ -1,20 +1,17 @@
 1class Solution {
 2public:
 3    bool isPalindrome(int x) {
-4        if(x==0) return true;
-5        if(x<0 || x%10==0) return false;
-6
-7    int rev = 0;
-8    while(x>rev){
-9        rev = rev*10 + x%10;
-10        x = x/10;
-11    }
-12    
-13    if(x==rev){
-14         return true; 
-15    }
-16    else if(x==rev/10) return true;
-17    else {
-18        return false;
-19    }
-20}};
+4        int result = 0;
+5        int dummy = x;
+6        if(x<0) return false;
+7        while(dummy){
+8            int d = dummy%10;
+9            if (result > INT_MAX / 10 || (result == INT_MAX / 10 && d > 7))
+10                return false;
+11            result = result * 10 + d;
+12            dummy/=10;
+13        }
+14        if(result == x) return true;
+15        else return false;
+16    }
+17};
