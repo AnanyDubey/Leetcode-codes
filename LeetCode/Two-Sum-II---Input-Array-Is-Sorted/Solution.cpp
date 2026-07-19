@@ -8,7 +8,7 @@
 8            if(numbers[left] + numbers[right] == target) { return {left+1, right+1}; }
 9
 10            else if(sum < target) { left++;  }
-11            else if(sum > target) { right--;}
+11            else right--;
 12            cout << sum<< endl;
 13        }
 14        return{};
