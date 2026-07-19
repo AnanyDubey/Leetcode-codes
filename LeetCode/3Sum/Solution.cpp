@@ -4,7 +4,7 @@
 4        sort(nums.begin(), nums.end());
 5        vector<vector<int>> result;
 6
-7        for(int i = 0; i < nums.size() && nums[i]<=0; i++){
+7        for(int i = 0; i < nums.size() - 2  && nums[i]<=0; i++){
 8            if( i == 0 || nums[i]!=nums[i-1]) { twoSum(nums, i, result); } // Try with i+1 ;
 9
 10        }
