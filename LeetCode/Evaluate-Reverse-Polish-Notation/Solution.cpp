@@ -1,35 +1,47 @@
-1class Solution {
-2public:
-3    int evalRPN(vector<string>& tokens) {
-4        stack<int> st;
-5
-6        for (string token : tokens) {
-7
-8            // If token is a number
-9            if (token != "+" && token != "-" &&
-10                token != "*" && token != "/") {
-11
-12                st.push(stoi(token));
-13            }
-14            else {
-15
-16                int right = st.top();
-17                st.pop();
-18
-19                int left = st.top();
-20                st.pop();
-21
-22                if (token == "+")
-23                    st.push(left + right);
-24                else if (token == "-")
-25                    st.push(left - right);
-26                else if (token == "*")
-27                    st.push(left * right);
-28                else
-29                    st.push(left / right);
-30            }
-31        }
-32
-33        return st.top();
-34    }
-35};
+1    class Solution {
+2    public:
+3        int evalRPN(vector<string>& tokens) {
+4            if(tokens.size() < 1) return 0;
+5            stack<int> sta;
+6            int res = 0, left = 0, right =0;
+7            for(int i = 0; i < tokens.size();i++){
+8                if(tokens[i] != "+" && tokens[i] != "-" && tokens[i] != "*" && tokens[i] != "/"){
+9                    sta.push(stoi(tokens[i]));
+10                }
+11                else if(tokens[i] == "+"){
+12                    right = sta.top();
+13                    sta.pop();
+14                    left = sta.top();
+15                    sta.pop();
+16                    res = left + right;
+17                    sta.push(res);
+18                }
+19                else if(tokens[i] == "-"){
+20                    right = sta.top();
+21                    sta.pop();
+22                    left = sta.top();
+23                    sta.pop();
+24                    res = left - right;
+25                    sta.push(res);
+26                }
+27                else if(tokens[i] == "/"){
+28                    right = sta.top();
+29                    sta.pop();
+30                    left = sta.top();
+31                    sta.pop();
+32                    res = left / right;
+33                    sta.push(res);
+34                }
+35                else if(tokens[i] == "*"){
+36                    right = sta.top();
+37                    sta.pop();
+38                    left = sta.top();
+39                    sta.pop();
+40                    res = left * right;
+41                    sta.push(res);
+42                }
+43
+44            }
+45        return sta.top();
+46        }
+47    };
