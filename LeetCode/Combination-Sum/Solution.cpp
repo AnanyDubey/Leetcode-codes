@@ -17,13 +17,14 @@
 17        if(target < 0) return;
 18    
 19        for(int i = ind; i < candidates.size();i++){
-20            ds.push_back(candidates[i]);
-21            //sum = sum + ds[i]
-22            
+20            if (candidates[i] > target) break;
+21            ds.push_back(candidates[i]);
+22            //sum = sum + ds[i]
 23            f(i, candidates, target-candidates[i], ans, ds);
 24            
-25            ds.pop_back();
-26            
-27        }
-28    }
-29};
+25
+26            ds.pop_back();
+27            
+28        }
+29    }
+30};
