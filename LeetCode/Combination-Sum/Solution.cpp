@@ -3,7 +3,7 @@
 3    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
 4        vector<vector<int>> ans;
 5        vector<int> ds;
-6        sort(candidates.begin(), candidates.end());
+6        //sort(candidates.begin(), candidates.end());
 7        f(0, candidates, target, ans, ds);
 8        return ans;
 9    }
@@ -17,7 +17,7 @@
 17        if(target < 0) return;
 18    
 19        for(int i = ind; i < candidates.size();i++){
-20            if (candidates[i] > target) break;
+20            if (candidates[i] > target) continue;
 21            ds.push_back(candidates[i]);
 22            //sum = sum + ds[i]
 23            f(i, candidates, target-candidates[i], ans, ds);
