@@ -1,29 +1,25 @@
 1class Solution {
 2public:
-3    void f(int ind, vector<int> &arr, int target, vector<vector<int>> &ans, vector<int> ds){
-4        if(target == 0){
-5            ans.push_back(ds);
-6            return ;
-7        }
-8
-9        for(int i = ind; i < arr.size(); i++){
-10            if(i > ind && arr[i] == arr[i-1]) continue;
-11            if(arr[i] > target) break;
-12            ds.push_back(arr[i]);
-13            f(i+ 1, arr, target - arr[i], ans, ds);
-14            ds.pop_back();
+3    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+4        vector<vector<int>> ans;
+5        vector<int>ds;
+6        sort(candidates.begin(), candidates.end());
+7        f(0, candidates, target, ans, ds);
+8        return ans;
+9    }
+10
+11   void f(int ind, vector<int> &candidates, int target, vector<vector<int>> &ans, vector<int>ds){
+12        if(target == 0){
+13            ans.push_back(ds);
+14            return;
 15        }
-16
-17    }
-18
-19
-20public:
-21    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
-22        sort(candidates.begin(), candidates.end());
-23        vector<vector<int>> ans;
-24        vector<int> ds;
-25
-26        f(0, candidates, target, ans, ds);
-27        return ans;
-28    }
-29};
+16        
+17        if(target < 0) return;
+18        for(int i = ind; i < candidates.size();i++){
+19            if(i > ind && candidates[i] == candidates[i-1]) continue;
+20            ds.push_back(candidates[i]);
+21            f(i+1, candidates, target - candidates[i], ans, ds);
+22            ds.pop_back();
+23        }
+24    }
+25};
