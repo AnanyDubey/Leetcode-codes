@@ -1,25 +1,30 @@
 1class Solution {
 2public:
-3    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
-4        vector<vector<int>> ans;
-5        vector<int>ds;
-6        sort(candidates.begin(), candidates.end());
-7        f(0, candidates, target, ans, ds);
-8        return ans;
-9    }
-10
-11   void f(int ind, vector<int> &candidates, int target, vector<vector<int>> &ans, vector<int>ds){
-12        if(target == 0){
-13            ans.push_back(ds);
-14            return;
-15        }
-16        
-17        if(target < 0) return;
-18        for(int i = ind; i < candidates.size();i++){
-19            if(i > ind && candidates[i] == candidates[i-1]) continue;
-20            ds.push_back(candidates[i]);
-21            f(i+1, candidates, target - candidates[i], ans, ds);
-22            ds.pop_back();
-23        }
-24    }
-25};
+3    void f(int ind, int target, vector<int> &arr, vector<vector<int>> &ans, vector<int> &ds){
+4    
+5        if(target == 0){
+6            ans.push_back(ds);
+7            return ;
+8        }
+9            
+10        for(int i = ind; i < arr.size(); i++){
+11            if(i > ind && arr[i] == arr[i-1]) continue;
+12            if(arr[i] > target) break;
+13            ds.push_back(arr[i]);
+14            f(i+1, target - arr[i], arr, ans, ds);
+15            ds.pop_back();
+16        }
+17    }
+18
+19
+20
+21public:
+22    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+23        sort(candidates.begin(), candidates.end());
+24        vector<vector<int>> ans;
+25        vector<int> ds;
+26        int s = 0;
+27        f(0, target, candidates, ans, ds);
+28        return ans;
+29    }
+30};
