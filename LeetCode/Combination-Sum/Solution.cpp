@@ -14,7 +14,7 @@
 14            ans.push_back(ds);
 15            return;
 16        }
-17        if(target < 0) return;
+17        //if(target < 0) return;
 18    
 19        for(int i = ind; i < candidates.size();i++){
 20            if (candidates[i] > target) continue;
