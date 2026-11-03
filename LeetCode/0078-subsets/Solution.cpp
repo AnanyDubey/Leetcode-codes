@@ -12,11 +12,11 @@ public:
             ans.push_back(ds);
             return;
         }
+
         ds.push_back(nums[ind]);
-        f(ind+1, nums, ans, ds);
+        f(ind + 1, nums, ans, ds);
         ds.pop_back();
-        f(ind+1, nums, ans, ds);
-
-
+        f(ind + 1, nums, ans, ds);
+        
     }
 };
